@@ -61,7 +61,8 @@ background-color: @surface;
 
 #right1 {
   background-color: @surface; 
-  box-shadow: inset 0 -3px 0 0 @subtle;
+  box-shadow: inset 0 -3px 0 0 @rose;
+  color: @rose;
 }
 
 #right2 {
@@ -87,6 +88,11 @@ window#waybar.empty #window {
   box-shadow: inset 0 -3px 0 0 @rose;
   color: @rose;
 }
+/* #custom/lyric{ */
+/*   background-color: @surface;  */
+/*   box-shadow: inset 0 -3px 0 0 @rose; */
+/*   color: @rose; */
+/* } */
 
 #workspaces {
   background-color: transparent;

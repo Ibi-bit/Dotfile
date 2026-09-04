@@ -30,11 +30,19 @@
     "group/left4"
   ],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["group/right1","clock", "group/right2"],
-
+  "modules-right": ["group/right1", "clock", "group/right2"],
+	"custom/lyric": {
+	    "format": "🎤 {}",
+	    "exec": "waybar-lyric",
+	    "return-type": "json",
+	    "max-length": 50,
+	    "on-scroll-up": "",
+	    "on-scroll-down": ""
+	  },
+	  
   "group/right1": {
     "orientation": "inherit",
-    "modules": ["tray"]
+    "modules": ["custom/lyric","tray"]
   },
   "group/right2": {
     "orientation": "inherit",
@@ -61,7 +69,9 @@
     },
     "persistent-workspaces": {
       "*": [1, 2, 3, 4, 5, 6]
-    }
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
   "custom/updatesapt": {
     "format": "{}{icon}",
@@ -72,7 +82,9 @@
     },
     "interval": 3600,
     "exec": "count=$(apt list --upgradable 2>/dev/null | grep -c upgradable); if [ \"$count\" -gt 0 ]; then echo \"{\\\"text\\\":\\\"$count\\\",\\\"class\\\":\\\"has-updates\\\",\\\"tooltip\\\":\\\"$count packages can be updated\\\"}\"; else echo \"{\\\"text\\\":\\\"\\\",\\\"class\\\":\\\"updated\\\",\\\"tooltip\\\":\\\"System up to date\\\"}\"; fi",
-    "on-click": "x-terminal-emulator -e sudo apt update && sudo apt upgrade"
+    "on-click": "x-terminal-emulator -e sudo apt update && sudo apt upgrade",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "custom/voxtype": {
     "format": "{icon}",
@@ -81,7 +93,9 @@
       "recording": "󰍬",
       "transcribing": "󰔟"
     },
-    "tooltip": true
+    "tooltip": true,
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "hyprland/window": {
     "format": "{title} - {class}",
@@ -92,30 +106,36 @@
       "(.*chrome)...(.*)": "   $1 ",
       "(.*) - Obsidian - .* - obsidian": "   $1 ",
       "(.*nvim)...(.*)": "   $2 ",
-      "(.*code) - (.*)": " 󰨞  $1 ",
+      "(.*code) - (.*)": " 󰨞   $1 ",
       "^.*btop( .*|$)": " 󰧨 BTOP $1 ",
       "^.*cmatrix( .*|$)": " 󰘨 MATRIX $1 ",
       "(.*) - Spotify": "  $1 ",
       "(.*) - com.mitchellh.ghostty": " 󰊠 $1 ",
       "(.*) - Alacritty": "   $1 ",
-      "(.*) - BeeperTexts": " 󰻞  $1 ",
+      "(.*) - BeeperTexts": " 󰻞   $1 ",
       "(.*Discord)...(.*).. (.*)": "   $2 ",
-      "(.*) - org.gnome.Nautilus": " 󰣆  $1 ",
+      "(.*) - org.gnome.Nautilus": " 󰣆   $1 ",
       "(.*) - fish": "   [$1] ",
       "(.*Steam)...(.*)": "   $1",
       "(.*imv)...(.*).. (.*)": "   $2",
       "(.*) - com.obsproject.Studio": "  $1 "
-    }
+    },
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "cpu": {
     "interval": 5,
     "format": " {usage:02}%",
-    "on-click": "x-terminal-emulator -e btop"
+    "on-click": "x-terminal-emulator -e btop",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "memory": {
     "interval": 5,
     "format": "  {percentage:02}%",
-    "on-click": "x-terminal-emulator -e btop"
+    "on-click": "x-terminal-emulator -e btop",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "clock": {
     "format": " {:%H:%M %a} ",
@@ -131,14 +151,18 @@
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b>{}</b></span>"
       }
-    }
+    },
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "󰛨",
       "deactivated": "󰛩"
-    }
+    },
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -150,7 +174,9 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
-    "on-click": "nm-connection-editor"
+    "on-click": "nm-connection-editor",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -168,7 +194,9 @@
     "states": {
       "warning": 20,
       "critical": 10
-    }
+    },
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "bluetooth": {
     "format": "",
@@ -176,20 +204,26 @@
     "format-off": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueman-manager"
+    "on-click": "blueman-manager",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}",
     "tooltip-format": "{percent}%",
-    "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
+    "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"],
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "custom/weather": {
     "format": "{}°",
     "tooltip": true,
     "interval": 1800,
     "exec": "wttrbar",
-    "return-type": "json"
+    "return-type": "json",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "pulseaudio#input": {
     "format-source": "",
@@ -215,11 +249,15 @@
     "scroll-step": 2,
     "smooth-scrolling-threshold": 1,
     "on-click": "x-terminal-emulator -e wiremix",
-    "on-click-right": "pamixer -t"
+    "on-click-right": "pamixer -t",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
   },
   "tray": {
     "icon-size": 12,
-    "spacing": 10
+    "spacing": 10,
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "mpris": {
     "format": "󰋎 {artist} - {title} - {album}",
@@ -233,10 +271,14 @@
     "status-icons": {
       "paused": "󰋐"
     },
-    "ignored-players": ["firefox", "chromium", "brave"]
+    "ignored-players": ["firefox", "chromium", "brave"],
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "custom/screenrecording-indicator": {
     "on-click": "wf-recorder -f ~/Videos/recording.mp4",
-    "return-type": "json"
+    "return-type": "json",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   }
 }
