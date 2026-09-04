@@ -57,7 +57,7 @@
       "battery"
     ]
   },
-  "hyprland/workspaces": {
+"hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
       "1": "1",
@@ -70,6 +70,7 @@
     "persistent-workspaces": {
       "*": [1, 2, 3, 4, 5, 6]
     },
+    "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
