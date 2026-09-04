@@ -5,11 +5,11 @@ if configDir then
     package.path = configDir .. "?.lua;" .. configDir .. "?/init.lua;" .. package.path
 end
 
-local shared = require("hyprland.shared")
+local shared = require("shared")
 
-require("hyprland.monitors")
-require("hyprland.look_and_feel")
-require("hyprland.input")
-require("hyprland.rules")
-require("hyprland.startup")(shared)
-require("hyprland.keybindings")(shared)
+require("monitors")
+require("look_and_feel")
+require("input")
+require("rules")
+require("startup")(shared)
+require("keybindings")(shared)
